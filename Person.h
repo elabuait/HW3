@@ -8,9 +8,11 @@ class Person
     public:
         Person();
         Person(string first, string last, int year, int day, int month);
-        string getName();
+        string getFirstName();
+        string getLastName();
         string getBirthdate();
-        void setName(string first);
+        void setFirstName(string first);
+        void setLastName(string last);
         void setBirthdate(int year,int month, int day);
 private:
         string Fname;
@@ -21,7 +23,10 @@ private:
 };
 class Employee : public Person {
     public:
+    string getPositionTitle();
+    void setPositionTitle(string jobTitle);
     private:
+    string positionTitle;
 };
 class Student : public Person {
     public:
@@ -32,13 +37,18 @@ class Student : public Person {
 };
 class GradStudent : public Student {
     public:
+    bool getCanGraduate();
     private:
+    bool can_graduate;
 };
 
 
-
-string Person::getName() {
+Person::Person(string first, string last, int year, int day, int month): Fname(first), Lname(last), birthYear(year), birthMonth(month), birthDay(day) {}
+string Person::getFirstName() {
     return Fname;
+}
+string Person::getLastName() {
+    return Lname;
 }
 string Person::getBirthdate() {
 return to_string(birthDay) + to_string(birthMonth) + to_string(birthYear);
@@ -47,8 +57,17 @@ return to_string(birthDay) + to_string(birthMonth) + to_string(birthYear);
 int Student::getNumCredits() {
     return num_credits;
 };
-void Person::setName(string first) {
+bool GradStudent::getCanGraduate() {
+    return can_graduate;
+}
+string Employee::getPositionTitle() {
+    return positionTitle;
+}
+void Person::setFirstName(string first) {
     Fname = first;
+}
+void Person::setLastName(string last) {
+    Lname = last;
 }
 void Person::setBirthdate(int year,int month, int day) {
     birthYear = year;
@@ -58,4 +77,8 @@ void Person::setBirthdate(int year,int month, int day) {
 void Student::setNumCredits(int credits) {
     num_credits = credits;
 }
+void Employee::setPositionTitle(string JobTitle) {
+    positionTitle = JobTitle;
+}
+
 #endif // PERSON_H
