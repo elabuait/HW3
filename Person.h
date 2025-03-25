@@ -25,6 +25,7 @@ private:
 class Employee : public Person {
     public:
     Employee();
+    Employee(string first, string last, string JobTitle, int year, int day, int month);
     string getPositionTitle();
     void setPositionTitle(string jobTitle);
 
@@ -33,14 +34,17 @@ class Employee : public Person {
 };
 class Student : public Person {
     public:
+    Student();
+    Student(string first, string last, int numCredits, int year, int day, int month);
     int getNumCredits();
     void setNumCredits(int credits);
-    void display();
     private:
     int num_credits;
 };
 class GradStudent : public Student {
     public:
+    GradStudent();
+    GradStudent(string first, string last, int numCredits, int year, int day, int month);
     bool getCanGraduate();
     void checkGraduationStatus();
     private:

@@ -27,7 +27,8 @@ void Person::setBirthdate(int year,int month, int day) {
     birthDay = day;
 }
 //employee
-Employee::Employee() : Fname("placeholder"), Lname("placeholder"), birthYear(2000), birthMonth(1), birthDay(1) {}
+Employee::Employee() : Person(), positionTitle("placeholder") {}
+Employee::Employee(string first, string last, string jobTitle, int year, int day, int month): Person(first, last, year, day, month), positionTitle(jobTitle) {}
 string Employee::getPositionTitle() {
     return positionTitle;
 }
@@ -35,11 +36,18 @@ void Employee::setPositionTitle(string JobTitle) {
     positionTitle = JobTitle;
 }
 //student
+Student::Student() : Person(), num_credits(1) {}
+Student::Student(string first, string last, int numCredits, int year, int day, int month): Person(first, last, year, day, month), num_credits(numCredits) {}
+
 int Student::getNumCredits() {
     return num_credits;
 };
-void Student::setNumCredits(int credits) {
-    num_credits = credits;
+void Student::setNumCredits(int numCredits) {
+    num_credits = numCredits;
+}
+//gradstudent
+GradStudent::GradStudent(string first, string last, int numCredits, int year, int day, int month):Student(first, last, numCredits, year, day, month) {
+    checkGraduationStatus();
 }
 bool GradStudent::getCanGraduate() {
     return can_graduate;
